@@ -17,17 +17,21 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
+    <div id="loading" class="d-none">Loading</div>
+    <h1 id="name">Name!</h1>
+    <div id="response-question"></div>
     <div id="response-text">Ask a Question</div>
-    <img
-      src="https://picsum.photos/id/237/600/400"
-      alt=""
-      id="response-image"
-      class="img-fluid"
-    />
-    <button onclick="shakeMagic8Ball(false)" class="btn btn-danger">
+    <img src="imgs/eightBall.png" class="img-fluid image" id="image" />
+    <button onclick="shakeMagic8Ball(false)" class="btn btn-danger" id="button">
       Shake the Eight Ball
     </button>
     <!-- Bootstrap JavaScript Libraries -->

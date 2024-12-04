@@ -1,93 +1,164 @@
 "use strict";
 
-window.onload = function construct() {
-  let BODY = document.getElementsByTagName("BODY")[0];
-  let respArr = [
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-    ["text", "img"],
-  ];
-  for (let i = 0; i < respArr.length; i++) {
-    respArr[i] = new Response(respArr[i][0], respArr[i][1]);
+window.onload = function startUp() {
+  let name = document.getElementById("name");
+  let input = prompt("What is your name?");
+  if (input != undefined) {
+    name.textContent = `Hello, ${input}`;
+  } else {
+    name.textContent = "Hello!";
   }
-  let divCont = document.createElement("div");
-  divCont.id = "magic-8-ball";
-  divCont.classList.add("text-center", "container-fluid", "my-auto");
-  let h1 = document.createElement("h1");
-  h1.textContent = greet();
-  let divResp = document.createElement("div");
-  divResp = "Ask a Question!";
-  divCont.append(h1);
-  BODY.insertAdjacentElement("afterbegin", divCont);
 };
-class Response {
-  text;
-  img;
-  constructor(text, img) {
-    this.text = text;
-    this.img = img;
-  }
-  clear() {
-    let responses = document.querySelectorAll("#response");
-    for (let i = 0; i < responses.length; i++) {
-      responses[i].remove();
-    }
-  }
-  make() {
-    this.clear();
-    let response = document.createElement("div");
-    response.id = "response";
-    let image = `<img src=${this.img} class="img-fluid" class="response-img">`;
-    let message = document.createElement("p");
-    message.textContent = this.text;
-    response.append(image);
-    response.append(message);
-    return response;
-  }
-}
+
+let respArr = [
+  ["Absolutely", "imgs/absolutely.gif"],
+  ["Yes", "imgs/yes.gif"],
+  ["You can count on it", "imgs/countOnIt.gif.gif"],
+  ["Probably", "imgs/probably.gif"],
+  ["Probably not", "imgs/probably not.gif"],
+  ["No", "imgs/no.gif"],
+  ["Not happening", "imgs/oh-that's-not-gonna-happen-brad.gif"],
+  ["Not even if you paid me.", "imgs/nopayment.gif"],
+];
+
 function shakeMagic8Ball() {
   let eightball = prompt("Plase ask a question!");
-  let randomNumber = Math.floor(Math.random() * 8);
-  console.log(eightball);
-  if (eightball) {
-    switch (randomNumber) {
-      case 7:
-        eightball = "It is certain";
-        break;
-      case 6:
-        eightball = "It is decidedly so";
-        break;
-      case 5:
-        eightball = "Reply hazy try again";
-        break;
-      case 4:
-        eightball = "Cannot predict now";
-        break;
-      case 3:
-        eightball = "Do not count on it";
-        break;
-      case 2:
-        eightball = "My sources say no";
-        break;
-      case 1:
-        eightball = "Outlook not so good";
-        break;
-      case 0:
-        eightball = "Signs point to yes";
-        break;
-    }
-    console.log(eightball);
-  } else {
-    shakeMagic8Ball();
-  }
+  load();
+  setTimeout(
+    () => {
+      let question = eightball;
+      let randomNumber = Math.floor(Math.random() * 8);
+      if (eightball) {
+        switch (randomNumber) {
+          case 7:
+            eightball = respArr[0];
+            break;
+          case 6:
+            eightball = respArr[1];
+            break;
+          case 5:
+            eightball = respArr[2];
+            break;
+          case 4:
+            eightball = respArr[3];
+            break;
+          case 3:
+            eightball = respArr[4];
+            break;
+          case 2:
+            eightball = respArr[5];
+            break;
+          case 1:
+            eightball = respArr[6];
+            break;
+          case 0:
+            eightball = respArr[7];
+            break;
+        }
+        unload();
+        let questionDiv = document.getElementById("response-question");
+        questionDiv.textContent = question;
+        let text = document.getElementById("response-text");
+        text.textContent = eightball[0];
+        let image = document.getElementById("image");
+        image.src = eightball[1];
+      } else {
+        shakeMagic8Ball();
+      }
+    },
+    5000,
+    eightball
+  );
+}
+
+function ellipsis(arg) {
+  let initial = document.getElementById("loading");
+  let text = arg;
+  let i = 0;
+  setTimeout(
+    () => {
+      text = text;
+      initial.textContent = text;
+      i = i + 1;
+    },
+    500,
+    text,
+    initial,
+    i
+  );
+  setTimeout(
+    () => {
+      text = text + ".";
+      initial.textContent = text;
+      i = i + 1;
+    },
+    1000,
+    text,
+    initial,
+    i
+  );
+  setTimeout(
+    () => {
+      text = text + ".";
+      initial.textContent = text;
+      i = i + 1;
+    },
+    1500,
+    text,
+    initial,
+    i
+  );
+  setTimeout(
+    () => {
+      text = text + ".";
+      initial.textContent = text;
+      i = i + 1;
+      ellipsis(arg);
+    },
+    2000,
+    text,
+    initial,
+    i
+  );
 }
 
 function greet() {
   return "Hello";
+}
+
+function load() {
+  let heading = document.getElementById("name");
+  let image = document.getElementById("image");
+  let response = document.getElementById("response-question");
+  let text = document.getElementById("response-text");
+  let button = document.getElementById("button");
+  heading.classList.add("d-none");
+  image.classList.add("d-none");
+  response.classList.add("d-none");
+  text.classList.add("d-none");
+  button.classList.add("d-none");
+  let loading = document.getElementById("loading");
+  loading.classList.remove("d-none");
+  document.body.classList.add("darkening");
+  ellipsis("Loading");
+}
+
+function unload() {
+  let heading = document.getElementById("name");
+  let image = document.getElementById("image");
+  let response = document.getElementById("response-question");
+  let text = document.getElementById("response-text");
+  let button = document.getElementById("button");
+  heading.classList.remove("d-none");
+  image.classList.remove("d-none");
+  response.classList.remove("d-none");
+  text.classList.remove("d-none");
+  button.classList.remove("d-none");
+  let loading = document.getElementById("loading");
+  loading.classList.add("d-none");
+  document.body.classList.remove("darkening");
+  document.body.classList.add("lighten");
+  setTimeout(() => {
+    document.body.classList.remove("lighten");
+  }, 200);
 }
