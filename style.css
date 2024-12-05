@@ -4,14 +4,11 @@ canvas {
 }
 
 body {
-  width: 100vw;
   height: 100vh;
   overflow: auto;
   background: linear-gradient(to bottom, rgb(225, 225, 255), rgb(66, 156, 216));
   font-family: Montserrat, sans-serif;
-  border-right: 10px solid black;
-  border-bottom: 10px solid black;
-  border-left: 10px solid black;
+  box-sizing: border-box;
 }
 
 img {
@@ -138,4 +135,50 @@ img {
   align-items: center;
   color: wheat;
   border-top: 10px solid black;
+  margin-bottom: 0 !important;
+  box-sizing: border-box;
+}
+
+#response-text {
+  margin-top: 0 !important;
+  width: 100%;
+  height: 60px;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+#image {
+  border-radius: 50%;
+  width: 45%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  box-shadow: 5px 20px 5px black;
+  background-color: rgb(255, 201, 53);
+  border: 10px outset rgb(255, 217, 146);
+}
+
+.col-12 {
+  display: flex;
+  justify-content: center;
+}
+
+#response-question {
+  height: 30px;
+  background-color: rgb(82, 32, 32);
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: wheat;
+  font-weight: 500;
 }

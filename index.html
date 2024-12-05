@@ -26,14 +26,26 @@
   </head>
 
   <body>
-    <div id="loading" class="d-none">Loading</div>
-    <h1 id="name">Name!</h1>
-    <div id="response-question"></div>
-    <div id="response-text">Ask a Question</div>
-    <img src="imgs/eightBall.png" class="img-fluid image" id="image" />
-    <button onclick="shakeMagic8Ball(false)" class="btn btn-danger" id="button">
-      Shake the Eight Ball
-    </button>
+    <div class="container-fluid">
+      <div id="loading" class="d-none">Loading</div>
+      <h1 id="name"></h1>
+      <div id="response-question"></div>
+      <div id="response-text">- Ask a Question -</div>
+      <div class="row">
+        <div class="col-12">
+          <img src="imgs/eightBall.png" class="img-fluid image" id="image" />
+        </div>
+        <div class="col-12">
+          <button
+            onclick="shakeMagic8Ball(false)"
+            class="btn btn-danger"
+            id="button"
+          >
+            Shake the Eight Ball
+          </button>
+        </div>
+      </div>
+    </div>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
