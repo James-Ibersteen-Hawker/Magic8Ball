@@ -3,10 +3,11 @@
 window.onload = function startUp() {
   let name = document.getElementById("name");
   let input = prompt("What is your name?");
-  if (input != undefined) {
-    name.textContent = `Hello, ${input}`;
-  } else {
+  console.log(input);
+  if (input == "" || input == undefined) {
     name.textContent = "Hello!";
+  } else {
+    name.textContent = `Hello, ${input}`;
   }
 };
 
@@ -66,7 +67,7 @@ function shakeMagic8Ball() {
         shakeMagic8Ball();
       }
     },
-    5000,
+    3000,
     eightball
   );
 }
@@ -132,6 +133,8 @@ function load() {
   let response = document.getElementById("response-question");
   let text = document.getElementById("response-text");
   let button = document.getElementById("button");
+  let cover = document.getElementById("cover");
+  cover.classList.add("d-none");
   heading.classList.add("d-none");
   image.classList.add("d-none");
   response.classList.add("d-none");
@@ -149,6 +152,8 @@ function unload() {
   let response = document.getElementById("response-question");
   let text = document.getElementById("response-text");
   let button = document.getElementById("button");
+  let cover = document.getElementById("cover");
+  cover.classList.remove("d-none");
   heading.classList.remove("d-none");
   image.classList.remove("d-none");
   response.classList.remove("d-none");

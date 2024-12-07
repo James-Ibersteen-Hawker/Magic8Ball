@@ -9,6 +9,7 @@ body {
   background: linear-gradient(to bottom, rgb(225, 225, 255), rgb(66, 156, 216));
   font-family: Montserrat, sans-serif;
   box-sizing: border-box;
+  overflow-x: clip;
 }
 
 img {
@@ -119,11 +120,16 @@ img {
   font-size: 30px;
   font-weight: 900;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.row {
+  padding: none;
+  margin: none;
 }
 
 #name {
@@ -167,9 +173,25 @@ img {
   border: 10px outset rgb(255, 217, 146);
 }
 
+@media screen and (max-width: 700px) {
+  #image {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  #image {
+    width: 30%;
+  }
+}
+
 .col-12 {
   display: flex;
   justify-content: center;
+}
+
+#image:not([src="imgs/eightBall.png"]) {
+  padding: 10px !important;
 }
 
 #response-question {
@@ -181,4 +203,17 @@ img {
   align-items: center;
   color: wheat;
   font-weight: 500;
+}
+
+#cover {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: rgb(111, 0, 255);
+  box-shadow: 0px -20px 50px 20px rgb(111, 0, 255);
+  z-index: -1;
+  border-bottom: 50px solid rgb(71, 18, 18);
+  box-sizing: border-box;
 }
